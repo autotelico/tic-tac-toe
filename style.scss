@@ -1,3 +1,12 @@
+$header-size: 48px;
+
+body {
+    background-color: #444;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
 .container {
     margin: 0 auto;
     height: 400px;
@@ -11,4 +20,18 @@
 .cell {
     border: 3px solid blue;
     background-color: aqua;
+}
+
+.header {
+    background-color: #eee;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    font-size: $header-size;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
 }

@@ -43,8 +43,8 @@ function createPlayer(name, marker) {
     return { getName, getMarker, getScore }
 }
 
-const player1 = createPlayer('Carl', 'X');
-const player2 = createPlayer('Mark', 'O');
+const player1 = createPlayer('Player 1', 'X');
+const player2 = createPlayer('Player 2', 'O');
 
 
 const GameController = (function () {
@@ -97,7 +97,7 @@ function evaluateWin() {
     }))
 }
 
-console.log('Active player is: ' + GameController.getActivePlayer());
+console.log('Active player is: ' + GameController.getActivePlayer().getName());
 
 
 
