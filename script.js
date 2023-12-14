@@ -1,6 +1,6 @@
 // document.addEventListener("DOMContentLoaded", () => {
 
-const Gameboard = (function() {
+const Gameboard = (function () {
     const board = [];
     const rows = 3;
     const columns = 3;
@@ -16,11 +16,11 @@ const Gameboard = (function() {
         return board;
     }
 
+
     return { getBoard }
 })();
 
 
-// console.log(newBoard.getBoard());
 
 
 let selectedRow = 2;
@@ -28,46 +28,72 @@ let selectedColumn = 1;
 
 // newBoard.getBoard()[selectedRow][selectedColumn] = 'X'; // will be player1Marker
 
-// console.log(newBoard.getBoard())
 
 
 function createPlayer(name, marker) {
 
     const playerName = name;
     const playerMarker = marker;
+    let score = 0;
 
-    const getName = () => name;
-    const getMarker = () => marker;
+    const getName = () => playerName;
+    const getMarker = () => playerMarker;
+    const getScore = () => score;
 
-
-
-    return { getName, getMarker }
+    return { getName, getMarker, getScore }
 }
 
 const player1 = createPlayer('Carl', 'X');
 const player2 = createPlayer('Mark', 'O');
 
-// console.log(player2.getName());
 
+const GameController = (function () {
 
-const startGame = (function () {
+    const players = [];
+    players.push({ player1 }, { player2 });
+
     const board = Gameboard.getBoard();
 
     const getBoard = () => board;
-
-    const { playerName } = createPlayer();
-
-    const players = [];
-
-    players.push({ player1, player2 });
-
     const getPlayers = () => players;
-    return { players, getPlayers, playerName, getBoard }
+
+    return { getPlayers, getBoard }
 })();
 
 
+console.log(GameController.getPlayers());
+console.log(GameController.getBoard());
 
-console.log(startGame.getPlayers());
-console.log(startGame.getBoard());
+function evaluateWin() {
+    const { getBoard } = Gameboard;
+    const board = getBoard();
+
+    if (board[0][0] && board[0][1] && board[0][2] ||
+        board[1][0] && board[1][1] && board[1][2] ||
+        board[2][0] && board[2][1] && board[2][2] ||
+
+        board[0][0] && board[1][0] && board[2][0] ||
+        board[0][1] && board[1][1] && board[2][1] ||
+        board[0][2] && board[1][2] && board[2][2] ||
+
+        board[0][2] && board[1][2] && board[2][2] ||
+        board[0][2] && board[1][2] && board[2][2] ||
+        board[0][2] && board[1][2] && board[2][2] ||
+        
+        board[0][0] && board[1][1] && board[2][2] ||
+        board[0][2] && board[1][1] && board[2][0]) {
+        return console.log('You win!');
+    } else board.forEach(row => row.forEach(column => {
+        if (column === 0) {
+            return console.log(`There is still an empty cell! (${board.indexOf(column)})`);
+        } else {
+            return console.log("It's a tie.");
+        }
+    }))
+}
+
+evaluateWin();
+
+
 
 // })
