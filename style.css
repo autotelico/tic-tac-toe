@@ -17,7 +17,12 @@ body {
 
 .cell {
   border: 3px solid blue;
-  background-color: aqua;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80px;
+  color: white;
 }
 
 .header {
@@ -29,7 +34,7 @@ body {
 }
 
 header {
-  font-size: 48px;
+  font-size: 80px;
   font-weight: 700;
   font-family: "Courier New", Courier, monospace;
 }/*# sourceMappingURL=style.css.map */

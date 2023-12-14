@@ -1,4 +1,4 @@
-$header-size: 48px;
+$big-size: 80px;
 
 body {
     background-color: #444;
@@ -19,7 +19,12 @@ body {
 
 .cell {
     border: 3px solid blue;
-    background-color: aqua;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $big-size;
+    color: white;
 }
 
 .header {
@@ -31,7 +36,7 @@ body {
 }
 
 header {
-    font-size: $header-size;
+    font-size: $big-size;
     font-weight: 700;
     font-family: 'Courier New', Courier, monospace;
 }
