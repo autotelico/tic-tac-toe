@@ -57,9 +57,18 @@ const GameController = (function () {
     const getBoard = () => board;
     const getPlayers = () => players;
 
-    return { getPlayers, getBoard }
+    const activePlayer = players[0];
+  
+    const getActivePlayer = () => activePlayer;
+  
+    const switchActivePlayer = () => {
+      activePlayer === players[0] ? activePlayer = players[1] : activePlayer = players[0];
+    }
+  
+    return { getPlayers, getBoard, getActivePlayer, switchActivePlayer }
 })();
 
+  
 
 console.log(GameController.getPlayers());
 console.log(GameController.getBoard());
@@ -68,18 +77,14 @@ function evaluateWin() {
     const { getBoard } = Gameboard;
     const board = getBoard();
 
-    if (board[0][0] && board[0][1] && board[0][2] ||
+    if (board[0][0] && board[0][1] && board[0][2] || // horizontal wins
         board[1][0] && board[1][1] && board[1][2] ||
         board[2][0] && board[2][1] && board[2][2] ||
 
-        board[0][0] && board[1][0] && board[2][0] ||
+        board[0][0] && board[1][0] && board[2][0] || // vertical wins
         board[0][1] && board[1][1] && board[2][1] ||
         board[0][2] && board[1][2] && board[2][2] ||
 
-        board[0][2] && board[1][2] && board[2][2] ||
-        board[0][2] && board[1][2] && board[2][2] ||
-        board[0][2] && board[1][2] && board[2][2] ||
-        
         board[0][0] && board[1][1] && board[2][2] ||
         board[0][2] && board[1][1] && board[2][0]) {
         return console.log('You win!');
@@ -92,7 +97,7 @@ function evaluateWin() {
     }))
 }
 
-evaluateWin();
+console.log('Active player is: ' + GameController.getActivePlayer());
 
 
 
