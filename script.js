@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  const player1Input = document.querySelector('#player1-input');
+  const player2Input = document.querySelector('#player2-input');
+  const playerInputs = document.querySelectorAll('input');
+
+    playerInputs.forEach(input => {
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            if (input.id === 'player1-input') {
+              
+            }
+            if (input.id === 'player2-input') {
+              
+            }
+            input.value = '';
+          }
+        })
+    });   
+
     const gameboard = document.querySelector('#gameboard');
   
     gameboard.addEventListener('click', (e) => {
@@ -47,8 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
     Gameboard.displayBoard();
   
-    function createPlayer(name, marker) {
-      const playerName = name;
+    function createPlayer(marker) {
+      const playerName = player1Input.value;
       const playerMarker = marker;
       let score = 0;
   
@@ -59,8 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return { getName, getMarker, getScore }
     }
   
-    const player1 = createPlayer('Player 1', '✖');
-    const player2 = createPlayer('Player 2', '◯');
+    const player1 = createPlayer('✖');
+    const player2 = createPlayer('◯');
+
+    
   
     const GameController = (function () {
       const players = [];

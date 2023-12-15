@@ -11,10 +11,13 @@
     <div class="header">
         <header>Tic-Tac-Toe</header>
     </div>
-    
-    
-    <div class="container" id="gameboard">
-  
+    <div id="input-container">
+        <label for="player1-input">Insert Player 1's name</label><input type="text" id="player1-input" maxlength="15" minlength="3">
+        <label for="player2-input">Insert Player 2's name</label><input type="text" id="player2-input" maxlength="15" minlength="3">
     </div>
+    <div class="container" id="gameboard">
+        <button type="button" id="restart-button">Restart</button>
+    </div>
+    <p id="winner-display"></p>
 </body>
 </html>

@@ -1,5 +1,8 @@
 $big-size: 80px;
 
+$default-font-family: 'Courier New', Courier, monospace;
+$default-font-size: 32px;
+
 body {
     background-color: #444;
     margin: 0;
@@ -39,4 +42,37 @@ header {
     font-size: $big-size;
     font-weight: 700;
     font-family: 'Courier New', Courier, monospace;
+}
+
+#input-container {
+    color: white;
+    font-size: $default-font-size;
+    font-family: $default-font-family;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);    
+}
+
+#input-container input {
+    width: 200px;
+}
+
+#restart-button {
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    appearance: none;
+    font-size: 60px;
+    padding: 3px 28px;
+    border: 3px solid blue;
+    border-radius: 15px;
+    background-color: #ccc;
+    cursor: pointer;
+    font-family: $default-font-family;
 }
