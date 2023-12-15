@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gameboard.addEventListener('click', (e) => {
         const chosenCell = e.target;
 
-        console.log(chosenCell);
         if (chosenCell === gameboard) {
             e.preventDefault();
         }
@@ -180,9 +179,7 @@ function evaluateWin() {
     cellList[4].textContent === '◯' &&
     cellList[6].textContent === '◯') {
         return console.log('PLAYER 2 WINS!!!');
-    } else {
-        return console.log('not yet');
-    }    
+    }
         
     }
         
