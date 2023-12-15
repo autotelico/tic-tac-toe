@@ -5,15 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
     gameboard.addEventListener('click', (e) => {
         const chosenCell = e.target;
 
-        if (chosenCell === gameboard) {
+        if (chosenCell === gameboard || chosenCell.textContent !== '') {
             e.preventDefault();
+        } else {
+            chosenCell.textContent = GameController.getActivePlayer().getMarker();
+            GameController.switchActivePlayer();
+            evaluateWin();
         }
-
-        chosenCell.textContent = GameController.getActivePlayer().getMarker();
-
-        GameController.switchActivePlayer();
-
-        evaluateWin();
     })
 
 
