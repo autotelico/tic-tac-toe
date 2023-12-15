@@ -5,16 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
     gameboard.addEventListener('click', (e) => {
         const chosenCell = e.target;
 
+        console.log(chosenCell);
         if (chosenCell === gameboard) {
             e.preventDefault();
         }
 
         chosenCell.textContent = GameController.getActivePlayer().getMarker();
-        console.log(chosenCell.textContent);
 
         GameController.switchActivePlayer();
 
+        evaluateWin();
     })
+
+
+    
 
 const Gameboard = (function () {
     const board = [];
@@ -33,15 +37,16 @@ const Gameboard = (function () {
         return board;
     }
     
-    const createCell = () => {
+    const createCell = (iCount) => {
         const div = document.createElement('div');
         div.classList.add('cell');
+        div.id = 'cell' + iCount;
         gameboard.appendChild(div);
     }
 
     const displayBoard = () => {
         for (let i = 0; i < rows * columns; i++) {
-            createCell();
+            createCell(i + 1);
         }
     }
 
@@ -71,7 +76,6 @@ const GameController = (function () {
 
     const players = [];
     players.push(player1, player2);
-    console.log('Players: ' + players);
 
     const board = Gameboard.getBoard();
 
@@ -93,33 +97,93 @@ const GameController = (function () {
   
 
 console.log(GameController.getPlayers());
-console.log(GameController.getBoard());
+// console.log(GameController.getBoard());
 
 function evaluateWin() {
-    const { getBoard } = Gameboard;
-    const board = getBoard();
+    
+    const cells = document.querySelectorAll('.cell');
+    
+    const cellList = []; 
+    
+    cells.forEach(cell => {
+        cellList.push(cell);
+    });
+    
+    
 
-    if (board[0][0] && board[0][1] && board[0][2] || // horizontal wins
-        board[1][0] && board[1][1] && board[1][2] ||
-        board[2][0] && board[2][1] && board[2][2] ||
+    if (cellList[0].textContent === '✖' && // horizontal wins
+    cellList[1].textContent === '✖' &&
+    cellList[2].textContent === '✖' ||
 
-        board[0][0] && board[1][0] && board[2][0] || // vertical wins
-        board[0][1] && board[1][1] && board[2][1] ||
-        board[0][2] && board[1][2] && board[2][2] ||
+    cellList[3].textContent === '✖' &&
+    cellList[4].textContent === '✖' &&
+    cellList[5].textContent === '✖' ||
 
-        board[0][0] && board[1][1] && board[2][2] ||
-        board[0][2] && board[1][1] && board[2][0]) {
-        return console.log('You win!');
-    } else board.forEach(row => row.forEach(column => {
-        if (column === 0) {
-            return console.log(`There is still an empty cell! (${board.indexOf(column)})`);
-        } else {
-            return console.log("It's a tie.");
-        }
-    }))
-}
-
-
+    cellList[6].textContent === '✖' &&
+    cellList[7].textContent === '✖' &&
+    cellList[8].textContent === '✖' ||
 
 
-})
+    cellList[0].textContent === '✖' && // vertical wins
+    cellList[3].textContent === '✖' &&
+    cellList[6].textContent === '✖' ||
+
+    cellList[1].textContent === '✖' &&
+    cellList[4].textContent === '✖' &&
+    cellList[7].textContent === '✖' ||
+
+    cellList[2].textContent === '✖' && 
+    cellList[5].textContent === '✖' &&
+    cellList[8].textContent === '✖' ||
+
+    cellList[0].textContent === '✖' && // diagonal wins
+    cellList[4].textContent === '✖' &&
+    cellList[8].textContent === '✖' ||
+
+    cellList[2].textContent === '✖' &&
+    cellList[4].textContent === '✖' &&
+    cellList[6].textContent === '✖'
+    
+    ) {   
+        return console.log('PLAYER 1 WINS');
+
+    } else if (cellList[0].textContent === '◯' && // horizontal wins
+    cellList[1].textContent === '◯' &&
+    cellList[2].textContent === '◯' ||
+
+    cellList[3].textContent === '◯' &&
+    cellList[4].textContent === '◯' &&
+    cellList[5].textContent === '◯' ||
+
+    cellList[6].textContent === '◯' &&
+    cellList[7].textContent === '◯' &&
+    cellList[8].textContent === '◯' ||
+
+
+    cellList[0].textContent === '◯' && // vertical wins
+    cellList[3].textContent === '◯' &&
+    cellList[6].textContent === '◯' ||
+
+    cellList[1].textContent === '◯' &&
+    cellList[4].textContent === '◯' &&
+    cellList[7].textContent === '◯' ||
+
+    cellList[2].textContent === '◯' && 
+    cellList[5].textContent === '◯' &&
+    cellList[8].textContent === '◯' ||
+
+    cellList[0].textContent === '◯' && // diagonal wins
+    cellList[4].textContent === '◯' &&
+    cellList[8].textContent === '◯' ||
+
+    cellList[2].textContent === '◯' &&
+    cellList[4].textContent === '◯' &&
+    cellList[6].textContent === '◯') {
+        return console.log('PLAYER 2 WINS!!!');
+    } else {
+        return console.log('not yet');
+    }    
+        
+    }
+        
+    })
