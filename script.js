@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const player2Input = document.querySelector('#player2-input');
   const playerInputs = document.querySelectorAll('input');
 
-  const restartBtn = document.querySelector('#restart-button');
+  const winnerDisplay = document.querySelector('#winner-display');
 
   playerInputs.forEach(input => {
     input.addEventListener('keydown', (e) => {
@@ -153,6 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cellList[6].textContent === '✖')
     ) {
       console.log('PLAYER 1 WINS');
+      winnerDisplay.textContent = 'Player 1 wins!'
       hasWinner = true;
 
     } else if (
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cellList[6].textContent === '◯')
     ) {
       console.log('PLAYER 2 WINS!!!');
+      winnerDisplay.textContent = 'Player 2 wins!'
       hasWinner = true;
     } else if (Array.from(cells).every(cell => cell.textContent !== '')) {
       return console.log('It\'s a tie.');

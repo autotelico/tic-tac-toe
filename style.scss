@@ -8,6 +8,9 @@ body {
     margin: 0;
     height: 100vh;
     width: 100vw;
+    font-family: $default-font-family;
+    font-size: $big-size;
+    color: white;
 }
 
 .container {
@@ -21,7 +24,7 @@ body {
 }
 
 .cell {
-    border: 3px solid blue;
+    border: 3px solid magenta;
     background-color: #000;
     display: flex;
     justify-content: center;
@@ -36,6 +39,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #333;
 }
 
 header {
@@ -62,6 +66,15 @@ header {
     width: 200px;
 }
 
+#winner-display {
+    position: absolute;
+    top: 30%;
+    left: 180%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    text-align: center;
+}
+
 #restart-button {
     position: absolute;
     top: 110%;
@@ -70,7 +83,7 @@ header {
     appearance: none;
     font-size: 60px;
     padding: 3px 28px;
-    border: 3px solid blue;
+    border: 3px solid magenta;
     border-radius: 15px;
     background-color: #ccc;
     cursor: pointer;
