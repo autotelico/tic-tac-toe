@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="./images/og-image.png">
+    <meta property="og:title" content="Play Tic-Tac-Toe With Friends!">
+    <meta property="og:url" content="https://autotelico.github.io/tic-tac-toe">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <div class="header">
         <header>Tic-Tac-Toe</header>
     </div>
     <div id="input-container">
-        <label for="player1-input">Insert Player 1's name:</label><input type="text" id="player1-input" maxlength="15" minlength="3">
-        <label for="player2-input">Insert Player 2's name:</label><input type="text" id="player2-input" maxlength="15" minlength="3">
+        <label for="player1-input">Insert Player 1's name:</label><input type="text" id="player1-input" maxlength="15"
+            minlength="3">
+        <label for="player2-input">Insert Player 2's name:</label><input type="text" id="player2-input" maxlength="15"
+            minlength="3">
     </div>
     <div class="container" id="gameboard">
         <button type="button" id="restart-button" onclick="location.reload()">Restart</button>
-    <p id="winner-display"></p>
+        <p id="winner-display"></p>
 
     </div>
 </body>
+
 </html>
