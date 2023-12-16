@@ -1,3 +1,3 @@
 # tic-tac-toe
 
-Play Tic-Tac-Toe with a friend!
+Built from scratch with modules and factory functions.
