@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const player2Input = document.querySelector('#player2-input');
   const playerInputs = document.querySelectorAll('input');
 
+  const restartBtn = document.querySelector('#restart-button');
+
   playerInputs.forEach(input => {
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
@@ -17,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     })
   });
+
 
   const gameboard = document.querySelector('#gameboard');
 
