@@ -61,6 +61,13 @@ header {
   width: 200px;
 }
 
+#input-container p {
+  font-size: 80px;
+  position: relative;
+  left: -500px;
+  top: -200px;
+}
+
 #winner-display {
   position: absolute;
   top: 30%;
