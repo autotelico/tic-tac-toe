@@ -104,7 +104,16 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(`It's ${activePlayer.getName()}'s turn.`);
     }
 
-    return { getPlayers, getBoard, getActivePlayer, switchActivePlayer }
+    const restart = function () {
+      activePlayer = players[0];
+      winnerDisplay.textContent = '';
+      const cells = document.querySelectorAll('.cell');
+      cells.forEach(cell => {
+        cell.textContent = '';
+      })
+    }
+
+    return { getPlayers, getBoard, getActivePlayer, switchActivePlayer, restart }
   })();
 
   console.log(GameController.getPlayers());
@@ -196,4 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
       return console.log('It\'s a tie.');
     }
   }
+
+  const restartBtn = document.querySelector('#restart-button');
+  restartBtn.addEventListener('click', () => {
+    GameController.restart();
+  })
+
 });
